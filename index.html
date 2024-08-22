@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Examen de Conduite au Maroc</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+        .question {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+        .button-container {
+            display: flex;
+            justify-content: center; /* Center the buttons */
+            display: flex;
+            flex-wrap: nowrap; /* Prevent buttons from wrapping to the next line */
+            gap: 10px; /* Space between buttons */
+            justify-content: space-between; /* Distribute the buttons evenly across the container */
+            margin-top: 10px;
+            overflow-x: auto; /* Allow horizontal scrolling if buttons overflow */
+        }
+        .answer-button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            max-width: 100px; /* Set a maximum width for each button */
+            min-width: 70px; /* Set a minimum width for each button */
+            flex: 0 1 auto; /* Prevent buttons from shrinking too much */
+            padding: 10px;
+            text-align: center;
+            white-space: nowrap; /* Prevent text from wrapping */
+        }
+        .answer-button:hover {
+            background-color: #0056b3;
+        }
+        .clear-button {
+            background-color: #dc3545;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            max-width: 100px; /* Set a maximum width for each button */
+            min-width: 70px; /* Set a minimum width for each button */
+            flex: 0 1 auto; /* Prevent buttons from shrinking too much */
+            padding: 10px;
+            text-align: center;
+            white-space: nowrap; /* Prevent text from wrapping */
+        }
+        .clear-button:hover {
+            background-color: #c82333;
+        }
+        .prev-button {
+            background-color: #00f7ff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            max-width: 100px; /* Set a maximum width for each button */
+            min-width: 70px; /* Set a minimum width for each button */
+            flex: 0 1 auto; /* Prevent buttons from shrinking too much */
+            padding: 10px;
+            text-align: center;
+            white-space: nowrap; /* Prevent text from wrapping */
+        }
+        .prev-button:hover {
+            background-color: #1b95a8;
+        }
+        .next-button {
+            background-color: #00f7ff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            max-width: 100px; /* Set a maximum width for each button */
+            min-width: 70px; /* Set a minimum width for each button */
+            flex: 0 1 auto; /* Prevent buttons from shrinking too much */
+            padding: 10px;
+            text-align: center;
+            white-space: nowrap; /* Prevent text from wrapping */
+        }
+        .next-button:hover {
+            background-color: #1b95a8;
+        }
+        .sc-button {
+            background-color: #ff9100;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            position: relative;
+            max-width: 100px; /* Set a maximum width for each button */
+            min-width: 70px; /* Set a minimum width for each button */
+            flex: 0 1 auto; /* Prevent buttons from shrinking too much */
+            padding: 10px;
+            text-align: center;
+            white-space: nowrap; /* Prevent text from wrapping */
+        }
+        .sc-button:hover {
+            background-color: #ad7600;
+        }
+        button {
+            background-color: #28a745;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        .sub {
+            background-color: #28a745;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 70px;
+        }
+        .sub:hover {
+            background-color: #218838;
+        }
+        .scroll-button {
+            background-color: #17a2b8;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 5px; /* Espacement de 0,5 cm */
+        }
+        .scroll-button:hover {
+            background-color: #117a8b;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 5%;
+        }
+        #incorrectAnswersContainer {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); /* Adjust the min width as needed */
+            gap: 10px; /* Space between buttons */
+        }
+        
+        .buttn-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .incorrect-button {
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            text-align: center;
+            font-size: 14px;
+            border-radius: 5px; /* Optional: to make buttons slightly rounded */
+        }
+        
+        .incorrect-button:hover {
+            background-color: darkred; /* Optional: change color on hover */
+        }
+        
+        .correction-text {
+            margin-top: 5px;
+            font-weight: bold;
+            background-color: green;
+            color: white;
+            padding: 5px; /* Adjust padding as needed */
+            border-radius: 50%;
+            text-align: center;
+            min-width: 30px; /* Adjust size as needed */
+            min-height: 30px; /* Adjust size as needed */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        
+        pre {
+            background: #f8f9fa;
+            padding: 10px;
+            border-radius: 4px;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 10px;
+        }
+        .para{
+            text-align: center;
+        }
+        @media (max-width: 600px) {
+            .answer-button, .clear-button, .prev-button, .next-button, .sc-button {
+                flex: 1 1 100%; /* Each button will take up the full width of the container on small screens */
+                max-width: 100%; /* Allow buttons to expand fully on narrow screens */
+            }
+            .button-container {
+                gap: 5px; /* Reduce the gap between buttons on smaller screens */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Examen de Conduite au Maroc</h1>
+
+        <label for="serie">Entrez votre série :</label>
+        <input title="Veuillez entrer une série valide (1-10)." type="number" id="serie" min="1" max="10">
+        <button id="myButton" onclick="startExam()">Commencer l'examen</button>
+        
+        <!-- Bouton pour aller en bas -->
+        <button title="Allez au dessous de la page" class="scroll-button" onclick="scrollToBottom()">Aller en bas</button>
+
+        <div id="questions"></div>
+        <button class="sub" onclick="submitAnswers()">Soumettre les réponses</button>
+        
+        <div id="result" class="result"></div>
+
+        <!-- Bouton pour aller en haut -->
+        <button class="scroll-button" onclick="scrollToTop()">Aller en haut</button>
+    </div>
+
+    <script src="exam.js"></script>
+</body>
+</html>
