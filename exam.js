@@ -66,7 +66,7 @@ function startExam() {
         const questionDiv = document.createElement('div');
         questionDiv.classList.add('question');
         questionDiv.innerHTML = `
-            <img id="qi${i + 1}" src="${questionImages[serie - 1][i]}" alt="Question ${i + 1}">
+            <img id="qi${i + 1}" class="imgae" src="${questionImages[serie - 1][i]}" alt="Question ${i + 1}">
             <label for="q${i + 1}">${i + 1} - </label>
             <input type="number" id="q${i + 1}" min="1" max="4" readonly>
             <div class="button-container">
